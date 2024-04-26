@@ -9,50 +9,25 @@ export default function StartPage() {
   const router = useRouter();
 
   const handleCheckIn = () => {
-    setType("check-in");
-    setQuestionsTime(0);
-    setCategory("");
+    setType("Check-in");
     router.push("/Skapa");
   };
 
   const handleQuickCheckIn = () => {
-    setType("check-in");
+    setType("Check-in");
     setQuestionsTime(15);
-    setCategory("quick");
+    setCategory("Slumpad");
     router.push("/Session");
   };
 
   const handleCheckOut = () => {
-    setType("check-out");
-    setQuestionsTime(0);
-    setCategory("");
+    setType("Check-out");
     router.push("/Skapa");
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#D0E8F2",
-        minHeight: "100dvh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center"
-      }}
-    >
-      <div
-        style={{
-          width: "80%",
-          margin: "0 auto",
-          marginTop: "-100px",
-          flexDirection: "column",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "space-between",
-          backgroundColor: "#90B8E7",
-          borderRadius: "10px",
-          boxShadow: "4px 0px 8px rgba(0, 0, 0, 0.2)"
-        }}
-      >
+    <div className="bg-customBlue min-h-screen flex flex-col justify-center">
+      <div className="w-4/5 mx-auto -mt-24 flex flex-col items-center justify-between bg-customDarkBlue rounded-lg shadow-md">
         <Button
           onClick={() => handleCheckIn()}
           size="xl"
