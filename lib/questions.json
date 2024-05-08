@@ -1,0 +1,12 @@
+[
+  {
+    "question": "Om du var ett väderfenomen, vilket skulle du vara idag?",
+    "category": ["Slumpad"],
+    "tid": "kort",
+    "type": "Check-in"
+  },
+  {
+    "question": "Vad tar du med dig från dagens möte?",
+    "type": "Check-out"
+  }
+]

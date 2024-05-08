@@ -22,7 +22,8 @@ export default function StartPage() {
 
   const handleCheckOut = () => {
     setType("Check-out");
-    router.push("/Skapa");
+    setQuestionsTime(15);
+    router.push("/Session");
   };
 
   return (

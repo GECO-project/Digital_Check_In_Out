@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { Button } from "@/components/ui/button";
-import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage-instance";
+import "./timerStyle.css";
 
 interface TimerProps {
   question: string;
@@ -12,6 +12,7 @@ interface TimerProps {
 export default function Timer({ question, time, setStage }: TimerProps) {
   const [counter, setCounter] = useState(time);
   const [isPlaying, setIsPlaying] = useState(0);
+  const [isShaking, setIsShaking] = useState(false);
 
   useEffect(() => {
     let timer: NodeJS.Timeout | undefined;
@@ -31,7 +32,12 @@ export default function Timer({ question, time, setStage }: TimerProps) {
   };
 
   const onTimerFinish = () => {
-    console.log("Timer finished");
+    setIsShaking(true);
+    const audio = new Audio("/timer.mp3");
+    audio.play();
+    setTimeout(() => {
+      setIsShaking(false);
+    }, 4500);
   };
 
   return (
@@ -42,7 +48,7 @@ export default function Timer({ question, time, setStage }: TimerProps) {
             {question}
           </h3>
         </div>
-        <div className="mt-20 mb-10">
+        <div className={`mt-20 mb-10 ${isShaking ? "shake" : ""}`}>
           <CountdownCircleTimer
             isPlaying
             key={isPlaying}

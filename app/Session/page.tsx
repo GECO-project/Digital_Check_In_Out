@@ -4,18 +4,8 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useAppContext } from "@/contexts/AppContext";
+import questions from "../../lib/questions.json";
 import Timer from "./timer";
-
-const questions = [
-  {
-    question: "Om du var ett väderfenomen, vilket skulle du vara idag?",
-    type: "Check-in"
-  },
-  {
-    question: "Vad tar du med dig från dagens möte?",
-    type: "Check-out"
-  }
-];
 
 export default function CreateSession() {
   const [stage, setStage] = useState(0);
