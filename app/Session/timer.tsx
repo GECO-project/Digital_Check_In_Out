@@ -100,11 +100,23 @@ export default function Timer({ question, time, setStage }: TimerProps) {
                 </AlertDialogTitle>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel style={{ fontSize: "22px" }}>
+                <AlertDialogCancel
+                  style={{
+                    fontSize: "22px",
+                    marginBottom: "2px",
+                    height: "50px"
+                  }}
+                >
                   Tillbaka
                 </AlertDialogCancel>
                 <AlertDialogAction
-                  style={{ fontSize: "22px" }}
+                  style={{
+                    fontSize: "22px",
+                    height: "50px",
+                    marginBottom: "20px",
+                    marginTop: "12px",
+                    paddingTop: "5px"
+                  }}
                   onClick={() => setStage((prev) => prev + 1)}
                 >
                   Avsluta
