@@ -46,12 +46,13 @@ export default function CreateSession() {
           {stage === 2 && <Summary />}
         </div>
         <div className="flex justify-between mx-auto mt-7">
-          <Button onClick={() => handleBack()} className="w-1/5">
+          <Button size="lg" onClick={() => handleBack()}>
             Tillbaka
           </Button>
           {stage === 2 && (
             <Button
-              className="w-1/5 bg-green-500"
+              size="lg"
+              className=" bg-green-500"
               onClick={() => router.push("/Session")}
             >
               Starta

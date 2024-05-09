@@ -2,6 +2,17 @@ import { useState, useEffect } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { Button } from "@/components/ui/button";
 import "./timerStyle.css";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger
+} from "@/components/ui/alert-dialog";
 
 interface TimerProps {
   question: string;
@@ -41,14 +52,14 @@ export default function Timer({ question, time, setStage }: TimerProps) {
   };
 
   return (
-    <div className="w-4/5 mx-auto -mt-14">
+    <div className="w-4/5 mx-auto mt-14">
       <div className="flex flex-col items-center justify-center">
         <div className="bg-yellow-200 rounded-lg shadow -mt-50 p-2">
-          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight text-center">
+          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight text-center p-5">
             {question}
           </h3>
         </div>
-        <div className={`mt-20 mb-10 ${isShaking ? "shake" : ""}`}>
+        <div className={`mt-10 mb-5 ${isShaking ? "shake" : ""}`}>
           <CountdownCircleTimer
             isPlaying
             key={isPlaying}
@@ -72,17 +83,35 @@ export default function Timer({ question, time, setStage }: TimerProps) {
           </CountdownCircleTimer>
         </div>
 
-        <div className="flex flex-col items-center space-y-8 mt-7">
-          <Button size="lg" onClick={() => setIsPlaying((prev) => prev + 1)}>
+        <div className="flex flex-col items-center space-y-10 mt-10">
+          <Button size="xl" onClick={() => setIsPlaying((prev) => prev + 1)}>
             Nästa person
           </Button>
-          <Button
-            variant="destructive"
-            size="lg"
-            onClick={() => setStage((prev) => prev + 1)}
-          >
-            Avsluta
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button size="xl" variant="destructive">
+                Avsluta
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent style={{ width: "90%" }}>
+              <AlertDialogHeader>
+                <AlertDialogTitle style={{ fontSize: "30px" }}>
+                  Är du säker på att du vill avsluta?
+                </AlertDialogTitle>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel style={{ fontSize: "22px" }}>
+                  Tillbaka
+                </AlertDialogCancel>
+                <AlertDialogAction
+                  style={{ fontSize: "22px" }}
+                  onClick={() => setStage((prev) => prev + 1)}
+                >
+                  Avsluta
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </div>
